@@ -47,55 +47,45 @@
     }
     body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f9f9f9;
             color: #333;
-            margin: 0;
             padding: 20px;
         }
         .container {
-            max-width: 700px;
+            max-width: 800px;
             margin: auto;
             background: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
         h2 {
             text-align: center;
-            color: #005f99;
+            color: #333;
         }
-        .tensor-section {
+        .section {
             margin-top: 20px;
         }
-        .tensor-header {
-            cursor: pointer;
-            background-color: #e0f7fa;
-            padding: 10px;
-            border-radius: 5px;
+        .section-title {
             font-weight: bold;
-            color: #00796b;
-            transition: background 0.3s;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+            color: #005f99;
         }
-        .tensor-header:hover {
-            background-color: #b2ebf2;
-        }
-        .tensor-content {
-            display: none;
-            margin-top: 10px;
-            overflow: auto;
-        }
-        table {
+        .tensor-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
         }
-        table, th, td {
+        .tensor-table th,
+        .tensor-table td {
             border: 1px solid #ccc;
-            padding: 10px;
-            text-align: right;
+            padding: 8px;
+            text-align: center;
+            font-size: 0.9em;
         }
-        th {
-            background-color: #e0f2f1;
+        .tensor-table th {
+            background-color: #e0e0e0;
         }
   </style>
   <script src="https://unpkg.com/htmx.org@1.4.1"></script>
@@ -239,77 +229,76 @@ print("Eigenvalues (for stability check):", eigenvalues)
 <h2>here is how the data is supposed to look like:</h2>
 
 <div class="container">
-    <h2>Tensor Data Representation</h2>
+        <h2>Tensor Data Visualization</h2>
 
-    <div class="tensor-section">
-        <div class="tensor-header" hx-on="click" hx-target="#original-state-content" hx-swap="toggle">Original State</div>
-        <div id="original-state-content" class="tensor-content">
-            <table>
+        <div class="section">
+            <div class="section-title">Original State</div>
+            <table class="tensor-table">
                 <tr><th>Values</th></tr>
                 <tr><td>tensor([1., 0., 1., 0.])</td></tr>
             </table>
         </div>
-    </div>
 
-    <div class="tensor-section">
-        <div class="tensor-header" hx-on="click" hx-target="#encoded-real-content" hx-swap="toggle">Encoded State (Real Part)</div>
-        <div id="encoded-real-content" class="tensor-content">
-            <table>
-                <tr><th>Row 1</th><td>3.1103e-06</td><td>0.0000</td><td>7.0711e-01</td><td>0.0000</td></tr>
-                <tr><th>Row 2</th><td>-6.9688e-01</td><td>0.0000</td><td>-3.1270e-06</td><td>0.0000</td></tr>
-                <tr><th>Row 3</th><td>7.1719e-01</td><td>0.0000</td><td>-2.8934e-06</td><td>0.0000</td></tr>
-                <tr><th>Row 4</th><td>-3.2693e-06</td><td>0.0000</td><td>7.0710e-01</td><td>0.0000</td></tr>
+        <div class="section">
+            <div class="section-title">Encoded State (Real Part)</div>
+            <table class="tensor-table">
+                <tr>
+                    <th>Row 1</th><th>Row 2</th><th>Row 3</th><th>Row 4</th>
+                </tr>
+                <tr><td>3.1103e-06</td><td>-6.9688e-01</td><td>7.1719e-01</td><td>-3.2693e-06</td></tr>
+                <tr><td>-0.0000e+00</td><td>-0.0000e+00</td><td>0.0000e+00</td><td>0.0000e+00</td></tr>
+                <tr><td>7.0711e-01</td><td>-3.1270e-06</td><td>-2.8934e-06</td><td>7.0710e-01</td></tr>
+                <tr><td>-0.0000e+00</td><td>-0.0000e+00</td><td>-0.0000e+00</td><td>-0.0000e+00</td></tr>
             </table>
         </div>
-    </div>
 
-    <div class="tensor-section">
-        <div class="tensor-header" hx-on="click" hx-target="#encoded-imag-content" hx-swap="toggle">Encoded State (Imag Part)</div>
-        <div id="encoded-imag-content" class="tensor-content">
-            <table>
-                <tr><th>Values</th><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
-                <tr><th>Values</th><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
-                <tr><th>Values</th><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
-                <tr><th>Values</th><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+        <div class="section">
+            <div class="section-title">Encoded State (Imaginary Part)</div>
+            <table class="tensor-table">
+                <tr>
+                    <th>Row 1</th><th>Row 2</th><th>Row 3</th><th>Row 4</th>
+                </tr>
+                <tr><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+                <tr><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+                <tr><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+                <tr><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
             </table>
         </div>
-    </div>
 
-    <div class="tensor-section">
-        <div class="tensor-header" hx-on="click" hx-target="#retrieved-real-content" hx-swap="toggle">Retrieved State (Real Part)</div>
-        <div id="retrieved-real-content" class="tensor-content">
-            <table>
-                <tr><th>Row 1</th><td>-9.4119e-12</td><td>0.0000</td><td>-5.0000e-01</td><td>0.0000</td></tr>
-                <tr><th>Row 2</th><td>4.9979e-01</td><td>0.0000</td><td>9.5890e-12</td><td>0.0000</td></tr>
-                <tr><th>Row 3</th><td>-4.9979e-01</td><td>0.0000</td><td>-9.3826e-12</td><td>0.0000</td></tr>
-                <tr><th>Row 4</th><td>9.6131e-12</td><td>0.0000</td><td>5.0000e-01</td><td>0.0000</td></tr>
+        <div class="section">
+            <div class="section-title">Retrieved State (Real Part)</div>
+            <table class="tensor-table">
+                <tr>
+                    <th>Row 1</th><th>Row 2</th><th>Row 3</th><th>Row 4</th>
+                </tr>
+                <tr><td>-9.4119e-12</td><td>4.9979e-01</td><td>-4.9979e-01</td><td>9.6131e-12</td></tr>
+                <tr><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td></tr>
+                <tr><td>-5.0000e-01</td><td>9.5890e-12</td><td>-9.3826e-12</td><td>5.0000e-01</td></tr>
+                <tr><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.0000</td></tr>
             </table>
         </div>
-    </div>
 
-    <div class="tensor-section">
-        <div class="tensor-header" hx-on="click" hx-target="#retrieved-imag-content" hx-swap="toggle">Retrieved State (Imag Part)</div>
-        <div id="retrieved-imag-content" class="tensor-content">
-            <table>
-                <tr><th>Row 1</th><td>-0.0</td><td>0.0</td><td>-0.0</td><td>0.0</td></tr>
-                <tr><th>Row 2</th><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
-                <tr><th>Row 3</th><td>-0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
-                <tr><th>Row 4</th><td>0.0</td><td>-0.0</td><td>0.0</td><td>0.0</td></tr>
+        <div class="section">
+            <div class="section-title">Retrieved State (Imaginary Part)</div>
+            <table class="tensor-table">
+                <tr>
+                    <th>Row 1</th><th>Row 2</th><th>Row 3</th><th>Row 4</th>
+                </tr>
+                <tr><td>-0.0</td><td>0.0</td><td>-0.0</td><td>0.0</td></tr>
+                <tr><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+                <tr><td>-0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+                <tr><td>0.0</td><td>-0.0</td><td>0.0</td><td>0.0</td></tr>
             </table>
         </div>
-    </div>
 
-    <div class="tensor-section">
-        <div class="tensor-header" hx-on="click" hx-target="#eigenvalues-content" hx-swap="toggle">Eigenvalues (Stability Check)</div>
-        <div id="eigenvalues-content" class="tensor-content">
-            <table>
+        <div class="section">
+            <div class="section-title">Eigenvalues (Stability Check)</div>
+            <table class="tensor-table">
                 <tr><th>Values</th></tr>
                 <tr><td>tensor([-6.2878e+04, 4.1658e+01, 4.7942e+01, 6.6603e+04])</td></tr>
             </table>
         </div>
     </div>
-
-</div>
     <div>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
   <rect width="400" height="300" fill="#ffffff"/>
