@@ -45,7 +45,60 @@
       font-size: 16px; /* Slightly larger font for readability */
       display: inline-block;
     }
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #005f99;
+        }
+        .tensor-section {
+            margin-top: 20px;
+        }
+        .tensor-header {
+            cursor: pointer;
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #00796b;
+            transition: background 0.3s;
+        }
+        .tensor-header:hover {
+            background-color: #b2ebf2;
+        }
+        .tensor-content {
+            display: none;
+            margin-top: 10px;
+            overflow: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: right;
+        }
+        th {
+            background-color: #e0f2f1;
+        }
   </style>
+  <script src="https://unpkg.com/htmx.org@1.4.1"></script>
 </head>
 <body>
 
@@ -119,6 +172,144 @@
 
     <p>yet again, my research leads me into holographic memory.....</p>
 
+    <p>I did some more tests into holographic memory, here is the code I used, it comes incorporated with complextensor and the tensor field that i have not explained yet.</p>
+    <p style="background-color: #f5f5f5; border: 1px solid #ddd; padding: 10px; font-family: monospace; white-space: pre-wrap;">
+import torch
+import numpy as np
+from complextensor import ComplexTensor
+from typing import Tuple
+
+# Define critical values for tensor stability
+ψ, ξ, τ, ε, π = 44.8, 3721.8, 64713.97, 0.28082, torch.tensor(np.pi, dtype=torch.float32)
+
+# Initialize a 4x4 ComplexTensor T with the given critical values
+real_part = torch.tensor([
+    [ψ, ε, 0, π],
+    [ε, ξ, τ, 0],
+    [0, τ, π, ε],
+    [π, 0, ε, ψ]
+], dtype=torch.float32)
+
+imag_part = torch.zeros_like(real_part)  # No imaginary component for initialization
+T = ComplexTensor(real_part, imag_part)
+
+# Encoding and retrieval functions using ComplexTensor
+def encode_state(T: ComplexTensor, state_vector: torch.Tensor) -> Tuple[ComplexTensor, torch.Tensor]:
+    """
+    Encodes a quantum state vector into the eigenbasis of T.
+    """
+    # Compute the eigenvalues and eigenvectors for the real part of T
+    eigvals, eigvecs = torch.linalg.eigh(T.real)  # Retrieve real eigenvalues and eigenvectors
+    eigvecs_tensor = ComplexTensor(torch.tensor(eigvecs, dtype=torch.float32), torch.zeros_like(torch.tensor(eigvecs, dtype=torch.float32)))
+    
+    # Convert state_vector to ComplexTensor for compatibility
+    state_vector_complex = ComplexTensor(state_vector, torch.zeros_like(state_vector))  
+    encoded_state = eigvecs_tensor * state_vector_complex  # Now both are ComplexTensor instances
+    return encoded_state, eigvals
+
+def retrieve_state(T: ComplexTensor, encoded_state: ComplexTensor, eigvals: torch.Tensor) -> ComplexTensor:
+    """
+    Retrieves the original state by projecting encoded state back.
+    """
+    # Recompute the eigenvectors of T
+    eigvecs = torch.tensor(np.linalg.eig(T.real.numpy())[1], dtype=torch.float32)
+    eigvecs_tensor = ComplexTensor(eigvecs, torch.zeros_like(eigvecs))
+    retrieved_state = encoded_state * eigvecs_tensor.conj()  # Project back using conjugate
+    return retrieved_state
+
+# Example quantum state for encoding
+quantum_state = torch.tensor([1.0, 0.0, 1.0, 0.0], dtype=torch.float32)
+
+# Encode and retrieve the state
+encoded_state, eigenvalues = encode_state(T, quantum_state)
+retrieved_state = retrieve_state(T, encoded_state, eigenvalues)
+
+# Output results
+print("Original State:", quantum_state)
+print("Encoded State (real part):", encoded_state.real)
+print("Encoded State (imag part):", encoded_state.imag)
+print("Retrieved State (real part):", retrieved_state.real)
+print("Retrieved State (imag part):", retrieved_state.imag)
+
+# Stability check of eigenvalues
+print("Eigenvalues (for stability check):", eigenvalues)
+
+    </p>
+
+<h2>here is how the data is supposed to look like:</h2>
+
+<div class="container">
+    <h2>Tensor Data Representation</h2>
+
+    <div class="tensor-section">
+        <div class="tensor-header" hx-on="click" hx-target="#original-state-content" hx-swap="toggle">Original State</div>
+        <div id="original-state-content" class="tensor-content">
+            <table>
+                <tr><th>Values</th></tr>
+                <tr><td>tensor([1., 0., 1., 0.])</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="tensor-section">
+        <div class="tensor-header" hx-on="click" hx-target="#encoded-real-content" hx-swap="toggle">Encoded State (Real Part)</div>
+        <div id="encoded-real-content" class="tensor-content">
+            <table>
+                <tr><th>Row 1</th><td>3.1103e-06</td><td>0.0000</td><td>7.0711e-01</td><td>0.0000</td></tr>
+                <tr><th>Row 2</th><td>-6.9688e-01</td><td>0.0000</td><td>-3.1270e-06</td><td>0.0000</td></tr>
+                <tr><th>Row 3</th><td>7.1719e-01</td><td>0.0000</td><td>-2.8934e-06</td><td>0.0000</td></tr>
+                <tr><th>Row 4</th><td>-3.2693e-06</td><td>0.0000</td><td>7.0710e-01</td><td>0.0000</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="tensor-section">
+        <div class="tensor-header" hx-on="click" hx-target="#encoded-imag-content" hx-swap="toggle">Encoded State (Imag Part)</div>
+        <div id="encoded-imag-content" class="tensor-content">
+            <table>
+                <tr><th>Values</th><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+                <tr><th>Values</th><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+                <tr><th>Values</th><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+                <tr><th>Values</th><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="tensor-section">
+        <div class="tensor-header" hx-on="click" hx-target="#retrieved-real-content" hx-swap="toggle">Retrieved State (Real Part)</div>
+        <div id="retrieved-real-content" class="tensor-content">
+            <table>
+                <tr><th>Row 1</th><td>-9.4119e-12</td><td>0.0000</td><td>-5.0000e-01</td><td>0.0000</td></tr>
+                <tr><th>Row 2</th><td>4.9979e-01</td><td>0.0000</td><td>9.5890e-12</td><td>0.0000</td></tr>
+                <tr><th>Row 3</th><td>-4.9979e-01</td><td>0.0000</td><td>-9.3826e-12</td><td>0.0000</td></tr>
+                <tr><th>Row 4</th><td>9.6131e-12</td><td>0.0000</td><td>5.0000e-01</td><td>0.0000</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="tensor-section">
+        <div class="tensor-header" hx-on="click" hx-target="#retrieved-imag-content" hx-swap="toggle">Retrieved State (Imag Part)</div>
+        <div id="retrieved-imag-content" class="tensor-content">
+            <table>
+                <tr><th>Row 1</th><td>-0.0</td><td>0.0</td><td>-0.0</td><td>0.0</td></tr>
+                <tr><th>Row 2</th><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+                <tr><th>Row 3</th><td>-0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr>
+                <tr><th>Row 4</th><td>0.0</td><td>-0.0</td><td>0.0</td><td>0.0</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="tensor-section">
+        <div class="tensor-header" hx-on="click" hx-target="#eigenvalues-content" hx-swap="toggle">Eigenvalues (Stability Check)</div>
+        <div id="eigenvalues-content" class="tensor-content">
+            <table>
+                <tr><th>Values</th></tr>
+                <tr><td>tensor([-6.2878e+04, 4.1658e+01, 4.7942e+01, 6.6603e+04])</td></tr>
+            </table>
+        </div>
+    </div>
+
+</div>
     <div>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
   <rect width="400" height="300" fill="#ffffff"/>
