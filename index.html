@@ -180,46 +180,40 @@
         .tensor-table th {
             background-color: #e0e0e0;
         }
-        /* Noir, detective-style background */
-        .noir-background {
-            background-color: #2d2d2d; /* Dark grey for a noir feel */
-            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 3px 3px; /* Creates a subtle, grainy effect */
-            color: #f5f5f5;
-            font-family: 'Courier New', Courier, monospace; /* Old typewriter style */
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-            line-height: 1.6;
+         /* Minimalist noir-inspired style */
+        body {
+            background-color: #1a1a1a; /* Dark background for a sleek noir feel */
+            font-family: Arial, sans-serif; /* Clean, modern font */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #e0e0e0; /* Light grey text color */
+        }
+        .minimal-noir {
+            background-color: #222;
+            padding: 20px 30px;
             max-width: 600px;
-            margin: auto;
-            text-align: justify;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.8); /* Soft shadow for depth */
+            line-height: 1.6;
+            font-size: 1.1em;
         }
-        .noir-background::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            opacity: 0.1; /* Subtle texture overlay */
+        .minimal-noir h1 {
+            font-size: 1.4em;
+            color: #c2c2c2; /* Softer headline color */
+            margin-bottom: 10px;
+            font-weight: normal;
         }
-        .noir-background h1, .noir-background p {
-            margin: 0 0 10px;
+        .minimal-noir p {
+            margin: 0;
+            color: #d8d8d8; /* Slightly darker text color for subtle contrast */
         }
-    /* Main report container styling */
-    .report-container {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      background: #fefefe;
-      padding: 20px 30px;
-      border: 2px solid #cccccc;
-      border-radius: 8px;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-      color: #333;
-    }
+        .minimal-noir .highlight {
+            color: #ffaa00; /* Accent color for keywords */
+            font-weight: bold;
+        }
 
   </style>
  
@@ -384,7 +378,7 @@
 
 
 
-    <p class="noir-background">
+    <div class="minimal-noir">
     
     1️⃣ The Quantum State Vector:
     ```
@@ -425,7 +419,8 @@
     - The ξ parameter creates temporal organization
     - τ ensures information doesn't get lost in the quantum noise
 
-    </p>
+    
+    </div>
  
 
     <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
