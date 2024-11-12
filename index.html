@@ -19,7 +19,34 @@
     
     
     <style>
-
+    /* Noir, detective-style background */
+        .noir-background {
+            background-color: #2d2d2d; /* Dark grey for a noir feel */
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 3px 3px; /* Creates a subtle, grainy effect */
+            color: #f5f5f5;
+            font-family: 'Courier New', Courier, monospace; /* Old typewriter style */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: auto;
+            text-align: justify;
+        }
+        .noir-background::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.1; /* Subtle texture overlay */
+        }
+        .noir-background h1, .noir-background p {
+            margin: 0 0 10px;
+        }
     /* Main report container styling */
     .report-container {
       font-family: Arial, sans-serif;
@@ -351,6 +378,52 @@
     }
   </script>
     </div>
+
+  <md-block>
+
+    <p class="noir-background">
+    
+    1️⃣ The Quantum State Vector:
+    ```
+    |Ψ⟩ₙₒₜₑ = ψ|relationship⟩ + ξ|time⟩ + τ|coherence⟩
+    ```
+    Each note exists in a three-dimensional Hilbert space defined by:
+    - ψ (relationship potential): 44.8 × rand(0,1)
+    - ξ (time-complexity): t/3721.8
+    - τ (coherence measure): ∫₀ᵗ coherence(t)dt
+    
+    2️⃣ Entanglement Mechanics:
+    When two notes i and j interact:
+    ```
+    ⟨Ψᵢ|Ψⱼ⟩ = ψᵢψⱼ + ξᵢξⱼ + τᵢτⱼ
+    ```
+    If ⟨Ψᵢ|Ψⱼ⟩ > threshold, the notes become entangled
+    
+    3️⃣ Time Evolution:
+    ```
+    ∂|Ψ⟩/∂t = -iH|Ψ⟩
+    ```
+    Where H is our Hamiltonian:
+    ```
+    H = ⎡ ψ   ε   0 ⎤
+        ⎢ ε   ξ   τ ⎥
+        ⎣ 0   τ   π ⎦
+    ```
+    
+    4️⃣ Coherence Preservation:
+    The τ parameter evolves according to:
+    ```
+    dτ/dt = -λτ + ∑ᵢ⟨Ψ|Ψᵢ⟩
+    ```
+    This maintains information relevance over time...
+    
+    The all happens in the entanglement structure:
+    - Notes with similar ψ values naturally cluster
+    - The ξ parameter creates temporal organization
+    - τ ensures information doesn't get lost in the quantum noise
+
+    </p>
+  </md-block>
 
     <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
     <!-- Friendly visualization background -->
