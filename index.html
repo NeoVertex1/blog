@@ -10,10 +10,13 @@
     <link href="/style.css" rel="stylesheet" type="text/css" media="all">
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <script src="https://unpkg.com/htmx.org@1.5.0"></script>
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body>
    
-    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    
     
     <style>
 
@@ -281,7 +284,73 @@
   </md-block>
 
     <p>my obsession with system design led me again into the most common route, i needed now to write the notes app in my own style, it was not enough for it to be a simple js app plus in fact i want to try some of my demon mathematics in this code, maybe some kind of memory module</p>
-  
+
+    <br>
+
+    <p>something fun i just did... notes should naturally organize themselves based on content relationships ..</p>
+    <div>
+       <div class="w-full max-w-4xl mx-auto p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded shadow-lg">
+    <h1 class="text-xl font-bold text-center mb-4">Quantum Notes</h1>
+
+    <!-- Add Note Input -->
+    <div class="mb-4">
+      <input
+        type="text"
+        id="note-input"
+        placeholder="New note..."
+        class="w-full p-2 rounded border"
+        onkeypress="if(event.key === 'Enter') addNote();"
+      />
+    </div>
+
+    <!-- Notes Display with Quantum Properties -->
+    <div id="notes-container" class="grid gap-4"></div>
+  </div>
+
+  <script>
+    let notes = [];
+
+    function addNote() {
+      const content = document.getElementById("note-input").value.trim();
+      if (!content) return;
+
+      const newNote = {
+        id: Date.now(),
+        content,
+        quantumState: {
+          psi: (Math.random() * 44.8).toFixed(2), // relationship potential
+          xi: (Date.now() / 3721.8).toFixed(2),    // time-complexity factor
+          tau: (0).toFixed(2)                      // coherence measure
+        }
+      };
+
+      notes.push(newNote);
+      displayNotes();
+      document.getElementById("note-input").value = ''; // clear input
+    }
+
+    function displayNotes() {
+      const notesContainer = document.getElementById("notes-container");
+      notesContainer.innerHTML = ''; // Clear current notes
+
+      notes.forEach(note => {
+        const noteCard = document.createElement("div");
+        noteCard.className = "p-4 bg-white rounded shadow-md transition-shadow hover:shadow-lg";
+
+        const contentDiv = document.createElement("div");
+        contentDiv.textContent = note.content;
+        noteCard.appendChild(contentDiv);
+
+        const quantumInfoDiv = document.createElement("div");
+        quantumInfoDiv.className = "text-sm text-gray-500 mt-2";
+        quantumInfoDiv.textContent = `ψ: ${note.quantumState.psi} | ξ: ${note.quantumState.xi} | τ: ${note.quantumState.tau}`;
+        noteCard.appendChild(quantumInfoDiv);
+
+        notesContainer.appendChild(noteCard);
+      });
+    }
+  </script>
+    </div>
     <br></br>
 
   
