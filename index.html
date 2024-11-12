@@ -13,53 +13,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <script src="https://unpkg.com/htmx.org@1.5.0"></script>
     <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    <script src="https://unpkg.com/htmx.org@1.4.1"></script>
   </head>
   <body>
    
     
     
     <style>
-    /* Noir, detective-style background */
-        .noir-background {
-            background-color: #2d2d2d; /* Dark grey for a noir feel */
-            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 3px 3px; /* Creates a subtle, grainy effect */
-            color: #f5f5f5;
-            font-family: 'Courier New', Courier, monospace; /* Old typewriter style */
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-            line-height: 1.6;
-            max-width: 600px;
-            margin: auto;
-            text-align: justify;
-        }
-        .noir-background::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            opacity: 0.1; /* Subtle texture overlay */
-        }
-        .noir-background h1, .noir-background p {
-            margin: 0 0 10px;
-        }
-    /* Main report container styling */
-    .report-container {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      background: #fefefe;
-      padding: 20px 30px;
-      border: 2px solid #cccccc;
-      border-radius: 8px;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-      color: #333;
-    }
-
+    
     /* Title styling */
     .report-title {
       font-size: 1.5em;
@@ -176,6 +137,7 @@
       font-size: 16px; /* Slightly larger font for readability */
       display: inline-block;
     }
+      
     body {
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
@@ -218,8 +180,49 @@
         .tensor-table th {
             background-color: #e0e0e0;
         }
+        /* Noir, detective-style background */
+        .noir-background {
+            background-color: #2d2d2d; /* Dark grey for a noir feel */
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 3px 3px; /* Creates a subtle, grainy effect */
+            color: #f5f5f5;
+            font-family: 'Courier New', Courier, monospace; /* Old typewriter style */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: auto;
+            text-align: justify;
+        }
+        .noir-background::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.1; /* Subtle texture overlay */
+        }
+        .noir-background h1, .noir-background p {
+            margin: 0 0 10px;
+        }
+    /* Main report container styling */
+    .report-container {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fefefe;
+      padding: 20px 30px;
+      border: 2px solid #cccccc;
+      border-radius: 8px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      color: #333;
+    }
+
   </style>
-  <script src="https://unpkg.com/htmx.org@1.4.1"></script>
+ 
 </head>
 <body>
   <!-- Glitch Title with SVG Filter for subtle glitch effect -->
@@ -379,7 +382,7 @@
   </script>
     </div>
 
-  <md-block>
+
 
     <p class="noir-background">
     
@@ -423,7 +426,7 @@
     - τ ensures information doesn't get lost in the quantum noise
 
     </p>
-  </md-block>
+ 
 
     <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
     <!-- Friendly visualization background -->
@@ -439,7 +442,7 @@
     
     <!-- Title -->
     <text x="400" y="50" text-anchor="middle" fill="#2c3e50" font-size="24" font-family="Arial">
-        Magic of Smart Notes
+       some weird stuff
     </text>
     
     <!-- Notes that "know" each other -->
