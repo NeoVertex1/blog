@@ -351,6 +351,76 @@
     }
   </script>
     </div>
+
+    <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+    <!-- Friendly visualization background -->
+    <defs>
+        <linearGradient id="friendlyGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#a8e6cf" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#dcedc1" stop-opacity="0.3"/>
+        </linearGradient>
+    </defs>
+    
+    <!-- Background -->
+    <rect width="800" height="600" fill="url(#friendlyGradient)"/>
+    
+    <!-- Title -->
+    <text x="400" y="50" text-anchor="middle" fill="#2c3e50" font-size="24" font-family="Arial">
+        Magic of Smart Notes
+    </text>
+    
+    <!-- Notes that "know" each other -->
+    <g transform="translate(100,150)">
+        <circle cx="0" cy="0" r="40" fill="#ffd3b6" stroke="#ff8b94">
+            <animate attributeName="r" 
+                     values="40;43;40" 
+                     dur="3s" 
+                     repeatCount="indefinite"/>
+        </circle>
+        <text x="0" y="5" text-anchor="middle">Note A</text>
+        
+        <circle cx="150" cy="0" r="40" fill="#ffd3b6" stroke="#ff8b94">
+            <animate attributeName="r" 
+                     values="40;43;40" 
+                     dur="3s" 
+                     repeatCount="indefinite"/>
+        </circle>
+        <text x="150" y="5" text-anchor="middle">Note B</text>
+        
+        <!-- Friendship line -->
+        <path d="M40,0 L110,0" stroke="#ff8b94" stroke-width="3" stroke-dasharray="5,5">
+            <animate attributeName="stroke-dasharray" 
+                     values="5,5;2,5;5,5" 
+                     dur="3s" 
+                     repeatCount="indefinite"/>
+        </path>
+    </g>
+    
+    <!-- Time river -->
+    <g transform="translate(100,300)">
+        <path d="M0,0 Q 300,50 600,0" fill="none" stroke="#87ceeb" stroke-width="4"/>
+        <text x="300" y="-20" text-anchor="middle" fill="#2c3e50">Time Flow</text>
+        
+        <!-- Floating note -->
+        <rect x="250" y="-10" width="30" height="30" fill="#ffd3b6" stroke="#ff8b94">
+            <animateMotion 
+                path="M0,0 Q 50,-20 100,0" 
+                dur="5s" 
+                repeatCount="indefinite"/>
+        </rect>
+    </g>
+    
+    <!-- Memory strength -->
+    <g transform="translate(100,450)">
+        <rect width="200" height="20" fill="#a8e6cf"/>
+        <text x="100" y="50" text-anchor="middle" fill="#2c3e50">Fresh Memory</text>
+        
+        <g transform="translate(300,0)">
+            <rect width="200" height="20" fill="#a8e6cf" fill-opacity="0.3"/>
+            <text x="100" y="50" text-anchor="middle" fill="#2c3e50">Fading Memory</text>
+        </g>
+    </g>
+</svg>
     <br></br>
 
   
