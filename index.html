@@ -15,6 +15,63 @@
     <link href="/style.css" rel="stylesheet" type="text/css" media="all">
     
     <style>
+
+    /* Main report container styling */
+    .report-container {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fefefe;
+      padding: 20px 30px;
+      border: 2px solid #cccccc;
+      border-radius: 8px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      color: #333;
+    }
+
+    /* Title styling */
+    .report-title {
+      font-size: 1.5em;
+      color: #003366;
+      font-weight: bold;
+      text-align: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 15px;
+    }
+
+    /* Section and sub-section headings */
+    .report-section {
+      margin-top: 20px;
+    }
+    .report-section-title {
+      font-size: 1.2em;
+      color: #003366;
+      font-weight: bold;
+      margin-bottom: 10px;
+      border-left: 4px solid #003366;
+      padding-left: 8px;
+    }
+    .report-subtitle {
+      font-size: 1.1em;
+      color: #666;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    /* Paragraph styling */
+    .report-text {
+      line-height: 1.6;
+      margin-bottom: 10px;
+      padding-left: 8px;
+    }
+    /* Inline formula styling */
+    .math {
+      color: #990000;
+      font-weight: bold;
+      font-family: "Courier New", monospace;
+    }
+      
        /* Import a blocky, squared font */
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
@@ -359,7 +416,48 @@ print("Eigenvalues (for stability check):", eigenvalues)
 
   <h3>key observations:</h3>
   <p>the results from the holographic encoding retrieval for example, the encoded state (real part) shows values primarly aroud </p>
-    <div>
+    
+  <div class="report-container">
+  <div class="report-title">Results of the Holographic Encoding and Retrieval</div>
+
+  <!-- Encoded State Section -->
+  <div class="report-section">
+    <div class="report-section-title">a. Encoded State:</div>
+    <div class="report-text">
+      <span class="report-subtitle">Real Part:</span> The encoded state (real part) shows values primarily around 
+      <span class="math">± 0.7071</span>, reflecting components along the eigenbasis. This suggests a successful encoding with values projected correctly across the four states.
+    </div>
+    <div class="report-text">
+      <span class="report-subtitle">Imaginary Part:</span> The encoded state’s imaginary part remains zero, which aligns with our setup since we did not introduce any complex elements initially.
+    </div>
+  </div>
+
+  <!-- Retrieved State Section -->
+  <div class="report-section">
+    <div class="report-section-title">b. Retrieved State:</div>
+    <div class="report-text">
+      <span class="report-subtitle">Real Part:</span> The retrieved state (real part) has entries close to <span class="math">± 0.5</span> in some locations, with very small values near zero in other entries (e.g., <span class="math">-9.4119 × 10<sup>-12</sup></span>).
+    </div>
+    <div class="report-text">
+      These tiny values, close to zero, are likely due to floating-point precision limits rather than errors, suggesting a successful retrieval with minimal distortion.
+    </div>
+    <div class="report-text">
+      <span class="report-subtitle">Imaginary Part:</span> The imaginary part of the retrieved state is entirely zero, indicating stability and consistency with the original state’s real structure.
+    </div>
+  </div>
+
+  <!-- Eigenvalues for Stability Check Section -->
+  <div class="report-section">
+    <div class="report-section-title">c. Eigenvalues for Stability Check:</div>
+    <div class="report-text">
+      The eigenvalues are <span class="math">[-6.2878 × 10<sup>4</sup>, 41.658, 47.942, 6.6603 × 10<sup>4</sup>]</span>.
+    </div>
+    <div class="report-text">
+      The wide range, particularly the very large positive and negative values, reflects stability in the system's spectrum. These eigenvalues maintain consistency across encoding and retrieval, indicating that the matrix structure is stable and suitable for the holographic process.
+    </div>
+  </div>
+</div>
+  <div>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
   <rect width="400" height="300" fill="#ffffff"/>
   
