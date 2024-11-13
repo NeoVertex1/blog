@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <script src="https://unpkg.com/htmx.org@1.5.0"></script>
     <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    <script src="https://cdn.jsdelivr.net/npm/visitor-counter@0.2.1/index.js"></script>
     <script src="https://unpkg.com/htmx.org@1.4.1"></script>
   </head>
   <body>
@@ -283,6 +284,15 @@
 
 
 
+    <script>
+  // Initialize the visitor counter
+  visitorCounter.init({
+    elementId: 'visitorCounter', // The ID of the HTML element where the counter will be displayed
+    apiUrl: 'https://your-server.com/api/visitor-count' // Your server endpoint to handle visitor count
+  });
+</script>
+
+    <div><div id="visitorCounter"></div></div>
     <p>
 
 
