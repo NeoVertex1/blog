@@ -18,6 +18,8 @@
     <script src="https://unpkg.com/htmx.org@1.4.1"></script>
     <script type="module" src="https://md-block.verou.me/md-block.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/visitor-counter@0.2.1/index.js"></script>
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/visitor-counter@0.2.1/index.js"></script>
  
   
    
@@ -248,8 +250,7 @@
         
 
   </style>
- <script type="module" src="https://md-block.verou.me/md-block.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/visitor-counter@0.2.1/index.js"></script>
+ 
 </head>
 <body>
   <!-- Glitch Title with SVG Filter for subtle glitch effect -->
@@ -336,6 +337,41 @@
 
 
      <br></br>
+
+     <p><span id="timestamp">17 Nov 2024</span></p>
+     <br>
+     <p> yesterday I made some interesting connections, i think its normal when you are deep in research to blind yourself to what your code or algorithm could or not do...
+        turns out using complex numbers to store embeddings is a very good idea, this is just the start, I will build an entire new framework to run opensource models, with the code I have I can run several currently existing models with my system, the question is, what will happen then?
+     </p>
+     <md-block>
+      from gpt4o:
+      ### **1. Embedding Compression and Efficiency**
+      #### **Mathematical Concept: Dimensionality Reduction with Complex Numbers**
+      - Represent embeddings in **half the memory** by combining two real-valued dimensions into one complex dimension.
+      - Example:
+        - Real embeddings: \( \mathbf{v} \in \mathbb{R}^d \)
+        - Complex embeddings: \( \mathbf{z} \in \mathbb{C}^{d/2} \) where:
+          \[
+          z_k = v_{2k} + i \cdot v_{2k+1}
+          \]
+
+      #### **Implementation Steps:**
+      1. Convert pretrained embeddings (e.g., word embeddings, positional encodings) into complex embeddings.
+        - **Real to Complex:** Pair adjacent dimensions of real embeddings to create a complex vector.
+        - **Inverse Transformation:** Ensure backward compatibility by projecting complex embeddings back to real space during decoding.
+
+      2. Update embedding layers:
+        - Replace `torch.nn.Embedding` with a complex-aware implementation that supports your **ComplexTensor** library.
+
+      #### **Expected Benefits:**
+      - **Memory savings** for large embedding tables.
+      - Encodes **phase relationships** between features (e.g., contextual shifts in embeddings).
+
+      #### **Challenges:**
+      - Needs tuning to ensure no loss in model accuracy.
+      - Requires efficient operations to handle complex-valued embeddings.
+
+     </md-block>
 
      <p><span id="timestamp">16 Nov 2024</span></p>
      <br>
