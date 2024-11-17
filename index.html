@@ -351,11 +351,11 @@
       #### **Mathematical Concept: Dimensionality Reduction with Complex Numbers**
       - Represent embeddings in **half the memory** by combining two real-valued dimensions into one complex dimension.
       - Example:
-      - Real embeddings: $$ \( \mathbf{v} \in \mathbb{R}^d \) $$
-      - Complex embeddings: $$ \( \mathbf{z} \in \mathbb{C}^{d/2} \) $$ 
+      - Real embeddings:  \( \mathbf{v} \in \mathbb{R}^d \) 
+      - Complex embeddings:  \( \mathbf{z} \in \mathbb{C}^{d/2} \) 
         where:
 
-         $$ \[ z_k = v_{2k} + i \cdot v_{2k+1} \] $$
+          \[ z_k = v_{2k} + i \cdot v_{2k+1} \] 
 
       #### **Implementation Steps:**
       1. Convert pretrained embeddings (e.g., word embeddings, positional encodings) into complex embeddings.
