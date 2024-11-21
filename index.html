@@ -19,12 +19,25 @@
     <script type="module" src="https://md-block.verou.me/md-block.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/visitor-counter@0.2.1/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/visitor-counter@0.2.1/index.js"></script>
- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   
    
     
     
     <style>
+
+table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
 
 .bounded-text {
             font-family: 'Roboto', sans-serif;
@@ -344,9 +357,70 @@
       
       the quantum correlation matrix show interesting relationships:</p>
 
-      <img src=""
+      <img src="/blog/images/quantum_phase_space_trajectory_philisophical_dimension.png">
+  <p>
+  we can see slight negative correlations between ethics and both metaphysics (-0.14) and epistemology (-0.11), suggesting these dimensions may exhibit philosophical complementarity, the uncertainty relations:
+  Δmetaphysics × Δepistemology = 0.0406
+  Δmetaphysics × Δethics = 0.0419
+  Δepistemology × Δethics = 0.0392
 
-     <p> I have a lot of new data to share but its gonna take some time, for now, take a look at this new version of the tensor_field (i uplodaded a python version on the 0.1.1/quantum branch of the complextensor repository)</p>
+  These are analogous to Heisenberg's uncertainty principle but for philosophical dimensions, the products of uncertainties show that we cannot simultaneously have precise knowledge of multiple philosophical dimensions.
+
+  The philosophical entropy values:
+  metaphysics: -19.7683
+  epistemology: -18.5209
+  ethics: -22.1296
+
+  Ethics shows the highest entropy (-22.13), suggesting it has the most complex and unpredictable behavior among the dimensions!
+  </p>
+
+  <table id="csv-table">
+    <thead>
+      <tr id="csv-header"></tr>
+  </thead>
+  <tbody id="csv-body"></tbody>
+  </table>
+  <script>
+    // Link to your CSV file
+    const csvUrl = "/blog/data/philosophical_measurements.csv"; // Replace with your CSV URL
+
+    // Fetch and parse the CSV
+    fetch(csvUrl)
+        .then(response => response.text())
+        .then(csvData => {
+            // Parse CSV data using PapaParse
+            Papa.parse(csvData, {
+                header: true, // Use the first row as headers
+                skipEmptyLines: true,
+                complete: function(results) {
+                    const tableHeader = document.getElementById('csv-header');
+                    const tableBody = document.getElementById('csv-body');
+                    
+                    // Get the headers
+                    const headers = results.meta.fields;
+                    headers.forEach(header => {
+                        const th = document.createElement('th');
+                        th.textContent = header;
+                        tableHeader.appendChild(th);
+                    });
+
+                    // Populate rows
+                    results.data.forEach(row => {
+                        const tr = document.createElement('tr');
+                        headers.forEach(header => {
+                            const td = document.createElement('td');
+                            td.textContent = row[header];
+                            tr.appendChild(td);
+                        });
+                        tableBody.appendChild(tr);
+                    });
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching the CSV:', error));
+</script>
+
+     <p> I have a lot of new data to share but its gonna take some time, for now, take a look at this new version of the tensor_field (i uplodaded a python version on the 0.1.1/quantum branch of the complextensor repository</p>
      
       <br>
 
