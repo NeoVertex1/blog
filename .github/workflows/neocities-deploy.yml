@@ -1,0 +1,21 @@
+name: Deploy to Neocities
+
+on:
+  push:
+    branches:
+      - main  # or the branch you're using
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to Neocities
+        uses: mrksparker/neocities-action@v1
+        with:
+          username: ${{ secrets.NEOCITIES_USERNAME }}
+          apikey: ${{ secrets.NEOCITIES_API_KEY }}
+          root: ./  # or the path to your site's root
