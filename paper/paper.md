@@ -390,4 +390,15 @@ SAMPLE:
 This term breaks scale invariance as \( t \) grows, allowing us to study time-dependent transformations.
 
 
+![mis_transformation](images/mis_transform.png)
+
+
+
+Combining the Components:
+
+Finally, we combine the scaling and time evolution to construct the full MIS transformation.
+
+
+
+
 
