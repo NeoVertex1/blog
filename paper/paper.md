@@ -10,14 +10,7 @@ To build the **Morphing Infinity Spiral (MIS)** from scratch, we need to underst
 
 ---
 
-![complex_plane_logarithm](images/complex_plane_logarithm_transform.png)
 
-
->Left Plot (Complex Plane): The cyan circle represents our unit circle ∣ z ∣ = 1 ∣z∣=1 The golden spiral shows how our transformation maps points Notice how the spiral grows exponentially while rotating 
-
->Right Plot (Logarithmic Transform): This shows what happens when we take log ⁡ ( z ) log(z) The curved spiral becomes a straight line The exponential growth becomes linear The rotation becomes a linear phase change
-
----
 
 ### **Starting Point**
 At its heart, the **MIS** combines ideas from:
@@ -25,6 +18,13 @@ At its heart, the **MIS** combines ideas from:
 2. **Complex Exponentiation**: Representing scaling and rotation using complex numbers.
 3. **Logarithmic Growth**: Controlling how transformations scale nonlinearly.
 4. **Time Evolution**: Adding dynamics to the system, making it morph.
+
+![complex_plane_logarithm](images/complex_plane_logarithm_transform.png)
+
+
+>Left Plot (Complex Plane): The cyan circle represents our unit circle ∣ z ∣ = 1 ∣z∣=1 The golden spiral shows how our transformation maps points Notice how the spiral grows exponentially while rotating 
+
+>Right Plot (Logarithmic Transform): This shows what happens when we take log ⁡ ( z ) log(z) The curved spiral becomes a straight line The exponential growth becomes linear The rotation becomes a linear phase change
 
 ---
 
@@ -44,6 +44,9 @@ f(kz) = k^\alpha \cdot f(z).
 \]
 This is **scale invariance**: the shape remains similar after scaling.
 
+![complex_scaling](images/complex_scaling.png)
+
+
 ---
 
 ### **Adding Complexity - Logarithms in the Complex Plane**
@@ -54,6 +57,9 @@ To introduce nonlinearity, we use the **complex logarithm**:
 The logarithm:
 1. Separates the **magnitude** (\(\ln|z|\)) and **phase** (\(\arg(z)\)) of \(z\).
 2. Grows nonlinearly, introducing interesting behaviors for large or small \(|z|\).
+
+
+![logarithms_complex_plane](images/logarithms_complex_plane.png)
 
 ---
 
