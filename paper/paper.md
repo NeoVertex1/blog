@@ -24,9 +24,19 @@ There are several qualities of the MIS and its PDE that are relevant for fields 
 
 This dissertation will also be able to explore the emergent properties of high-entropy in a framework that usually has not been seen. With self-observance and self-similarity, the entropy in this systems form vortex clusters that organize the chaotic behaviour.
 
-With help of Machine Learning we are able to approximate the optimal radius of these fractals, which reveals intricate behavior.
+
+
+With help of Machine Learning we are able to approximate the optimal radius of these fractals, which reveals singularity approximation and attractors.
+
+The image show the optimal radius of the MIS that reveals a machine like sctructure. The structure is often be refeared as attractor or dynamic attractor in this case. 
 
 ![optimal_radius](images/optimal_radius_attractors.png)
+
+ The approximations done with learnable parameters allow us to find the optimal radius in other algorithms, like the Ikeda Map for example:
+
+![ikeda_map](images/Ikeda_map_attractor.jpeg)
+
+ While not ideal, this suggest exploration into attractors is possible with this kind of ML algorithms. Number approximations and optimal paths might be a good way to `a)` *cut on energy waste* `b)` *cheaping production.* While there is a certain number of things we will try using the MIS, including large scale quantum kernels allowed by the use of complex tensors.
 
 <small>
 
