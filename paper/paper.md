@@ -2,6 +2,8 @@
 
 The Morphing Infinity Spiral (MIS) combines scaling, rotation, and time-dependent transformations to produce patterns that exhibit partial self-similarity and evolving fractal structures. This study examines the breakdown of scale invariance over time, the effects of complex parameters on dynamic behavior, and the emergence of fractal-like features. Computational methods are used to evaluate rotational symmetry, fractal dimensions, and the interplay between scale and time. The results provide insights into dynamic systems with evolving symmetry properties and suggest applications in modeling complex phenomena across mathematics and physics.
 
+>i should remake the abstract to point out the most important findings of the paper like this: The assumption that higher entropy always means less useful information GIVE EMPHASIS HERE The belief that information flow must be controlled to be valuable The idea that system noise is always detrimental
+
 
 
 To build the **Morphing Infinity Spiral (MIS)** from scratch, we need to understand its components, step by step, by breaking the equation into fundamental mathematical and geometric concepts.
@@ -431,6 +433,9 @@ We can visualize this by plotting:
    - Time evolution: Numerical versus analytical derivatives with respect to \(t\).
 
 
+![mis_structure](images/mis_structure.png)
+
+
 # **Time-Dependent Rotation**
 
 We now introduce the time evolution term
@@ -464,7 +469,7 @@ Finally, we combine the scaling and time evolution to construct the full MIS tra
 ![full_mis](images/mis_transformation_full.png)
 
 
-MIS result for z=(1+1j), alpha=(0.5+0.5j), beta=1.0, t=1.0: (0.22396038172782223+0.28962255926097136j)
+`MIS result for z=(1+1j), alpha=(0.5+0.5j), beta=1.0, t=1.0: (0.22396038172782223+0.28962255926097136j)`
 
 
 ### Visualizing the Spiral
