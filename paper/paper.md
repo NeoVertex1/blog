@@ -72,6 +72,9 @@ This term creates:
 - **Rotation** controlled by \(t\), with \((\log(z))^\beta\) determining how rotation changes with \(|z|\) and \(\arg(z)\).
 - **Time Evolution**: As \(t\) changes, the spiral pattern morphs.
 
+
+![time_depedent_morphing](images/time_dependent_morphing.png)
+
 ---
 
 ### **Combining Scaling and Morphing**
