@@ -6,6 +6,17 @@ The Morphing Infinity Spiral (MIS) combines scaling, rotation, and time-dependen
 
 To build the **Morphing Infinity Spiral (MIS)** from scratch, we need to understand its components, step by step, by breaking the equation into fundamental mathematical and geometric concepts.
 
+![mis_3blue_style](images/mis_3blue_style.png)
+
+---
+
+![complex_plane_logarithm](images/complex_plane_logarithm_transform.png)
+
+
+>Left Plot (Complex Plane): The cyan circle represents our unit circle ∣ z ∣ = 1 ∣z∣=1 The golden spiral shows how our transformation maps points Notice how the spiral grows exponentially while rotating 
+
+>Right Plot (Logarithmic Transform): This shows what happens when we take log ⁡ ( z ) log(z) The curved spiral becomes a straight line The exponential growth becomes linear The rotation becomes a linear phase change
+
 ---
 
 ### **Starting Point**
@@ -575,3 +586,7 @@ The analysis successfully explores the relationships between entropy, informatio
 The pairplot above visualizes the relationships between entropy, information utility, and system resilience. It highlights clear trends, such as the inverse relationship between entropy and utility, and a positive correlation between entropy and resilience.
 
 Correlation Matrix:
+
+
+
+
