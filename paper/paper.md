@@ -8,7 +8,7 @@ To build the **Morphing Infinity Spiral (MIS)** from scratch, we need to underst
 
 ---
 
-### **Step 1: Starting Point**
+### **Starting Point**
 At its heart, the **MIS** combines ideas from:
 1. **Scaling**: Transforming a shape by stretching or compressing it.
 2. **Complex Exponentiation**: Representing scaling and rotation using complex numbers.
@@ -17,7 +17,7 @@ At its heart, the **MIS** combines ideas from:
 
 ---
 
-### **Step 2: Base Concept - Complex Scaling**
+### **Base Concept - Complex Scaling**
 We start with a simple power-law function:
 \[
 f(z) = z^\alpha, \quad z \in \mathbb{C}, \, \alpha \in \mathbb{C}.
@@ -35,7 +35,7 @@ This is **scale invariance**: the shape remains similar after scaling.
 
 ---
 
-### **Step 3: Adding Complexity - Logarithms in the Complex Plane**
+### **Adding Complexity - Logarithms in the Complex Plane**
 To introduce nonlinearity, we use the **complex logarithm**:
 \[
 \log(z) = \ln|z| + i\arg(z).
@@ -46,7 +46,7 @@ The logarithm:
 
 ---
 
-### **Step 4: Morphing with Time - Exponentiation with Time Parameter**
+### **Morphing with Time - Exponentiation with Time Parameter**
 We make the function dynamic by adding a **time-dependent rotation**:
 \[
 g(z, t) = \exp(i \cdot t \cdot (\log(z))^\beta), \quad \beta \in \mathbb{C}.
@@ -57,7 +57,7 @@ This term creates:
 
 ---
 
-### **Step 5: Combining Scaling and Morphing**
+### **Combining Scaling and Morphing**
 Finally, we combine the scaling and morphing terms:
 \[
 S_{\alpha, \beta}(z, t) = z^\alpha \cdot \exp(i \cdot t \cdot (\log(z))^\beta).
@@ -68,7 +68,7 @@ This equation balances:
 
 ---
 
-### **Step 6: Emergent Behavior**
+### ** Emergent Behavior**
 The MIS exhibits several fascinating properties:
 1. **Fractals and Self-Similarity**: Repeated application of \(S_{\alpha, \beta}\) creates patterns with partial self-similarity.
 2. **Scale-Time Interplay**: As \(t\) increases, the perfect scale invariance of \(z^\alpha\) is disrupted by the time-dependent rotation.
@@ -97,7 +97,7 @@ The time evolution introduces rotation at a rate proportional to \(\log(z)\).
 
 
 
-# Step 1: Complex Scaling
+# Complex Scaling
 The first component of the MIS is scaling a complex number 𝑧 by a complex exponent 𝛼. This operation combines magnitude scaling and phase rotation.
 
 
@@ -257,7 +257,7 @@ This transformation is particularly interesting because both the base and the ex
 
 
 
-# Step 2: Adding the Logarithm
+# Adding the Logarithm
 
 Next, we incorporate the logarithm of 𝑧, which introduces **nonlinearity** into the transformation.
 
@@ -409,6 +409,15 @@ MIS result for z=(1+1j), alpha=(0.5+0.5j), beta=1.0, t=1.0: (0.22396038172782223
 To observe the fractal-like patterns, we plot the MIS over a grid of complex numbers.
 
 ![full_mis_visualization](images/mis_full_visualization_1.png)
+
+
+
+------
+
+continue here
+
+
+
 
 
 
