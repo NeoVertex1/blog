@@ -117,7 +117,7 @@ S_{\alpha, \beta}(z, t) = z^\alpha \cdot \exp(i \cdot t \cdot \log(z)).
 \]
 The time evolution introduces rotation at a rate proportional to \(\log(z)\).
 
-
+![example](images/intuition_example.png)
 
 
 # Complex Scaling
@@ -128,6 +128,8 @@ SAMPLE:
 
 Complex scaling result for z=(1+1j), alpha=(0.5+0.5j): (0.6777725052404346+0.4306022701168375j)
 
+
+
 ### **Understanding the Complex Scaling Result**
 
 The result of the **complex scaling** operation for \( z = 1 + i \) and \( \alpha = 0.5 + 0.5i \) is:
@@ -137,6 +139,7 @@ z^\alpha = 0.6778 + 0.4306i
 
 To explain this result mathematically, let’s break it down step by step:
 
+![complex_scaling](images/complex_scaling_operation.png)
 ---
 
 ### **Mathematical Breakdown**
