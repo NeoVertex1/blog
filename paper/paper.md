@@ -30,19 +30,25 @@ With help of Machine Learning we are able to approximate the optimal radius of t
 
 <small>
 
-`sample: 2024-11-29 01:18:47,206 - INFO - Grid created. 2024-11-29 01:18:47,207 - INFO - Step 0/100 complete. Max |Z|: 4.6534e+00 2024-11-29 01:18:47,212 - WARNING - Extreme value detected at step 7: max |Z| = 1.3476e+10 2024-11-29 01:18:47,212 - ERROR - Divergence detected. Stopping simulation. 2024-11-29 01:18:47,212 - INFO - MIS PDE solved. 2024-11-29 01:18:47,212 - INFO - Calculating fractal dimension... 2024-11-29 01:18:47,230 - INFO - Fractal dimension: 2.0000`
+`2024-11-28 20:37:16,971 - INFO - Optimal radius found: 0.1500, Local Density: 1.2527e-01`
+
+`2024-11-28 20:37:16,873 - INFO - Creating grid...
+2024-11-28 20:37:16,874 - INFO - Solving MIS PDE...
+2024-11-28 20:37:16,876 - INFO - Step 0/100 complete. Max |Z|: 4.6534e+00
+2024-11-28 20:37:16,882 - WARNING - Extreme value detected at step 7: max |Z| = 1.3476e+10
+2024-11-28 20:37:16,883 - ERROR - Divergence detected. Stopping simulation.
+2024-11-28 20:37:16,883 - INFO - MIS PDE solution complete.
+2024-11-28 20:37:16,883 - INFO - Analyzing singularity near z=0 with adaptive radius...
+2024-11-28 20:37:16,884 - WARNING - No points found within radius=0.1000. Expanding radius...
+2024-11-28 20:37:16,884 - INFO - Local density near z=0 (radius=0.1500): 1.2527e-01`
 
 </small>
 
-
-<br>
 <br>
 
 **Key Observations**
 
 <small>
-
-
 
 **Phase Map Insights:**
 
@@ -57,9 +63,12 @@ The fractal dimension was calculated as 2.0000, suggesting a plane-filling attra
 Simulation Dynamics:
 
 The simulation encountered divergence at step 7 (max |Z| = 1.3476e+10). Despite early termination, it managed to compute meaningful outputs, including the fractal dimension and the final phase map.
+
 </small>
 
 This paper also has the intention to introduce some of the problems that seem unexplained. The simulations show intricate 2D structures that are visible in the phase map. It is believed that there are not much scientific baking to their existence. **(come back to this in detail)**
+
+We will also introduce the MISTransform that can be used for Machine Learning and random number generation, between other things.
 
 ---
 
