@@ -155,6 +155,8 @@ For \( z = 1 + i \):
 r = \sqrt{1^2 + 1^2} = \sqrt{2}, \quad \theta = \tan^{-1}(1) = \frac{\pi}{4}
 \]
 
+![polar_representation_of_z](images/polar_representation_z.png)
+
 #### 2. Applying the Complex Exponent
 The operation \( z^\alpha \) involves:
 \[
