@@ -86,6 +86,7 @@ This equation balances:
 1. **Scale Invariance** (\(z^\alpha\)): Preserves structure when \(t = 0\).
 2. **Time Evolution** (\(\exp(i \cdot t \cdot (\log(z))^\beta)\)): Introduces dynamic morphing.
 
+![scaling_morphing](images/scaling_morphing.png)
 ---
 
 ### ** Emergent Behavior**
@@ -93,6 +94,8 @@ The MIS exhibits several fascinating properties:
 1. **Fractals and Self-Similarity**: Repeated application of \(S_{\alpha, \beta}\) creates patterns with partial self-similarity.
 2. **Scale-Time Interplay**: As \(t\) increases, the perfect scale invariance of \(z^\alpha\) is disrupted by the time-dependent rotation.
 3. **Complex Dynamics**: The interaction of \(\alpha\), \(\beta\), and \(t\) creates intricate spirals and patterns.
+
+![emergent_property](images/emergent_behavior.png)
 
 ---
 
