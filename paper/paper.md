@@ -124,9 +124,9 @@ The time evolution introduces rotation at a rate proportional to \(\log(z)\).
 The first component of the MIS is scaling a complex number 𝑧 by a complex exponent 𝛼. This operation combines magnitude scaling and phase rotation.
 
 
-SAMPLE:
+**sample:**
 
-Complex scaling result for z=(1+1j), alpha=(0.5+0.5j): (0.6777725052404346+0.4306022701168375j)
+`Complex scaling result for z=(1+1j), alpha=(0.5+0.5j): (0.6777725052404346+0.4306022701168375j)`
 
 
 
@@ -183,6 +183,9 @@ The total phase:
 \phi = \frac{\pi}{8} + i\frac{\ln(2)}{4} \approx 0.3927 + 0.1733
 \]
 
+
+![complex_exponent](images/complex_exponent.png)
+
 #### 3. Combining Magnitude and Phase
 The final scaled value is:
 \[
@@ -192,6 +195,8 @@ Numerically:
 \[
 z^\alpha = 1.1892 \cdot e^{i(0.3927 + 0.1733)} \approx 0.6778 + 0.4306i
 \]
+
+![magnitude_phase](images/combined_phase_magnitude.png)
 
 ---
 
@@ -291,9 +296,28 @@ Next, we incorporate the logarithm of 𝑧, which introduces **nonlinearity** in
 
 Code Implementation:
 
-SAMPLE:
+```python
+def complex_logarithm(z):
+    """
+    Compute the complex logarithm log(z).
+    
+    Parameters:
+        z (complex or ndarray): Input complex number(s).
+    
+    Returns:
+        complex or ndarray: Logarithm of z.
+    """
+    return np.log(z)
 
-Complex logarithm of z=(1+1j): (0.34657359027997264+0.7853981633974483j)
+# Example
+log_z = complex_logarithm(z)
+print(f"Complex logarithm of z={z}: {log_z}")
+
+```
+
+**sample:**
+
+`Complex logarithm of z=(1+1j): (0.34657359027997264+0.7853981633974483j)`
 
 
 ### **Understanding the Complex Logarithm Result**
@@ -306,6 +330,9 @@ The result of the complex logarithm for \( z = 1 + i \) is:
 This value combines two key components:
 1. The **magnitude** (\(\ln|z|\)): Represents the natural logarithm of the modulus of \(z\).
 2. The **phase** (\(\arg(z)\)): Represents the angle of \(z\) in the complex plane.
+
+
+![complex_logarithm_results](images/complex_logarithm_results.png)
 
 ---
 
@@ -348,6 +375,9 @@ The complex logarithm maps a point \(z\) in the complex plane to a new point who
 1. **Real part** is based on the magnitude (\(\ln|z|\)).
 2. **Imaginary part** is based on the angle (\(\arg(z)\)).
 
+![visual](images/complex_logarithm_graph.png)
+
+
 We can visualize this by plotting:
 1. The original point \(z = 1 + i\) in the complex plane.
 2. The logarithmic transformation \(\log(z)\) in a new space.
@@ -370,6 +400,10 @@ We can visualize this by plotting:
 - The complex logarithm separates \(z\) into **magnitude** and **phase**, effectively mapping it to a new coordinate system.
 - This transformation is central to the **MIS** equation as it allows nonlinear scaling and rotation via \((\log(z))^\beta\).
 - Observing this mapping visually helps understand how the logarithmic component contributes to the dynamic morphing in the full MIS.
+
+
+
+
 
 
 
@@ -579,7 +613,7 @@ What's particular about these results:
 3. The visualizations show beautiful symmetries that weren't initially expected
 
 This research challenges several traditional beliefs about information flow:
-- The assumption that higher entropy always means less useful information
+- The assumption that higher entropy always means less useful information **GIVE EMPHASIS HERE**
 - The belief that information flow must be controlled to be valuable
 - The idea that system noise is always detrimental
 
