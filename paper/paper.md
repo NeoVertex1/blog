@@ -22,7 +22,7 @@ By providing a structured analysis of the MIS, this study aims to contribute to 
 
 There are several qualities of the MIS and its PDE that are relevant for fields such as signal processing, quantum computing and encryption. The operations allowed by the MIS transformations are chaotic enough to create high levels of randomness, these are not fully unbounded chaotic systems, as they can scale with scale invariance, which in a fractal context, suggests self-observance. As we explore these mathematical objects, the optimal radius of these structures will reveal attractors. The intricate balance of the equation is useful for approximating mathematical singularities. 
 
-This dissertation will also be able to explore the emergent properties of high-entropy in a framework that usually has not been seen. With self-observance and self-similarity, the entropy in this systems form clusters that organize the chaotic behaviour.
+This dissertation will also be able to explore the emergent properties of high-entropy in a framework that usually has not been seen. With self-observance and self-similarity, the entropy in this systems form vortex clusters that organize the chaotic behaviour.
 
 With help of Machine Learning we are able to approximate the optimal radius of these fractals, which reveals intricate behavior.
 
