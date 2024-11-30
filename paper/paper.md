@@ -28,7 +28,7 @@ This dissertation will also be able to explore the emergent properties of high-e
 
 With help of Machine Learning we are able to approximate the optimal radius of these fractals, which reveals singularity approximation and attractors.
 
-The image show the optimal radius of the MIS that reveals a machine like sctructure. The structure is often be refeared as attractor or dynamic attractor in this case. 
+The image show the optimal radius of the MIS that reveals a machine like sctructure. The structure is often refeared as attractor or dynamic attractor in this case. 
 
 ![optimal_radius](images/optimal_radius_attractors.png)
 
