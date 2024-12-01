@@ -101,6 +101,10 @@ Explicitly state how your results overturn conventional assumptions:
 "Information flow must be tightly controlled."
 "System noise is always detrimental."
 
+---
+
+# Methodology
+
 To build the **Morphing Infinity Spiral (MIS)** from scratch, we need to understand its components, step by step, by breaking the equation into fundamental mathematical and geometric concepts.
 
 ![mis_3blue_style](images/mis_3blue_style.png)
