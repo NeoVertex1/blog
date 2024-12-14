@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +11,10 @@
             color: #ffffff;
             text-align: center;
         }
-
         svg {
             display: block;
             margin: 0 auto;
         }
-
         table {
             margin: 20px auto;
             border-collapse: collapse;
@@ -25,24 +22,20 @@
             background-color: #ffffff;
             color: #000000;
         }
-
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
         }
-
         th {
             background-color: #3b82f6;
             color: #ffffff;
         }
-
         caption {
             font-size: 18px;
             font-weight: bold;
             margin: 10px 0;
         }
-
         #export-button {
             margin-top: 20px;
             padding: 10px 20px;
@@ -53,13 +46,22 @@
             color: white;
             cursor: pointer;
         }
-
         #export-button:hover {
             background-color: #2563eb;
         }
-
         input[type="range"] {
-            width: 100px;
+            width: 200px;
+            margin: 10px 0;
+        }
+        /* Additional styling for sliders */
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .slider-container {
+            margin: 20px auto;
+            width: 300px;
+            text-align: left;
         }
     </style>
 </head>
@@ -67,37 +69,42 @@
     <h1>Refined Neural Network Visualization</h1>
     <p>Explore data propagation and export live logs for analysis.</p>
 
+    <!-- Input Sliders -->
+    <div class="slider-container">
+        <label for="input1-slider">Input I1:</label>
+        <input type="range" id="input1-slider" min="0" max="1" step="0.01" value="0.7" oninput="updateInput(0, this.value)" />
+        <span id="input1-value-display">0.70</span>
+        <br><br>
+        <label for="input2-slider">Input I2:</label>
+        <input type="range" id="input2-slider" min="0" max="1" step="0.01" value="0.9" oninput="updateInput(1, this.value)" />
+        <span id="input2-value-display">0.90</span>
+    </div>
+
     <!-- SVG Neural Network -->
     <svg width="900" height="500" xmlns="http://www.w3.org/2000/svg" id="neural-network">
         <!-- Input Layer -->
-        <circle id="input1" cx="150" cy="150" r="30" fill="#60a5fa" data-value="0.5" />
+        <circle id="input1" cx="150" cy="150" r="30" fill="#60a5fa" data-value="0.7" />
         <text x="150" y="155" fill="#ffffff" font-size="16" text-anchor="middle">I1</text>
-        <text id="input1-value" x="120" y="210" fill="#ffffff" font-size="14">0.50</text>
-
-        <circle id="input2" cx="150" cy="350" r="30" fill="#60a5fa" data-value="0.5" />
+        <text id="input1-value" x="120" y="210" fill="#ffffff" font-size="14">0.70</text>
+        <circle id="input2" cx="150" cy="350" r="30" fill="#60a5fa" data-value="0.9" />
         <text x="150" y="355" fill="#ffffff" font-size="16" text-anchor="middle">I2</text>
-        <text id="input2-value" x="120" y="410" fill="#ffffff" font-size="14">0.50</text>
-
+        <text id="input2-value" x="120" y="410" fill="#ffffff" font-size="14">0.90</text>
         <!-- Hidden Layer -->
         <circle id="hidden1" cx="400" cy="150" r="30" fill="#fbbf24" />
         <text x="400" y="155" fill="#ffffff" font-size="16" text-anchor="middle">H1</text>
         <text id="hidden1-value" x="370" y="210" fill="#ffffff" font-size="14"></text>
-
         <circle id="hidden2" cx="400" cy="350" r="30" fill="#fbbf24" />
         <text x="400" y="355" fill="#ffffff" font-size="16" text-anchor="middle">H2</text>
         <text id="hidden2-value" x="370" y="410" fill="#ffffff" font-size="14"></text>
-
         <!-- Output Layer -->
         <circle id="output" cx="700" cy="250" r="30" fill="#34d399" />
         <text x="700" y="255" fill="#ffffff" font-size="16" text-anchor="middle">O</text>
         <text id="output-value" x="670" y="310" fill="#ffffff" font-size="14"></text>
-
         <!-- Input to Hidden Connections -->
         <line id="i1h1" x1="180" y1="150" x2="370" y2="150" stroke="#6ee7b7" stroke-width="4" />
         <line id="i1h2" x1="180" y1="150" x2="370" y2="350" stroke="#6ee7b7" stroke-width="4" />
         <line id="i2h1" x1="180" y1="350" x2="370" y2="150" stroke="#6ee7b7" stroke-width="4" />
         <line id="i2h2" x1="180" y1="350" x2="370" y2="350" stroke="#6ee7b7" stroke-width="4" />
-
         <!-- Hidden to Output Connections -->
         <line id="h1o" x1="430" y1="150" x2="670" y2="250" stroke="#3b82f6" stroke-width="4" />
         <line id="h2o" x1="430" y1="350" x2="670" y2="250" stroke="#3b82f6" stroke-width="4" />
@@ -121,8 +128,21 @@
 
     <script>
         const sigmoid = x => 1 / (1 + Math.exp(-x));
-
         const data = []; // Store live data logs for export
+
+        // Weights
+        const weights = { 
+            i1h1: 0.6, 
+            i1h2: 0.4, 
+            i2h1: 0.3, 
+            i2h2: 0.7, 
+            h1o: 0.8, 
+            h2o: 0.2 
+        };
+
+        // Inputs (modifiable via sliders)
+        const inputs = [0.7, 0.9];
+
         const logToTable = (name, calc, activation) => {
             const tableRow = `<tr>
                 <td>${name}</td>
@@ -134,27 +154,40 @@
         };
 
         function forwardProp() {
-            const inputs = [0.5, 0.5];
-            const weights = { i1h1: 0.5, i1h2: 0.5, i2h1: 0.5, i2h2: 0.5, h1o: 0.5, h2o: 0.5 };
+            const h1_calc = `${inputs[0]}*${weights.i1h1} + ${inputs[1]}*${weights.i2h1}`;
+            const h2_calc = `${inputs[0]}*${weights.i1h2} + ${inputs[1]}*${weights.i2h2}`;
+            const output_calc = `H1*${weights.h1o} + H2*${weights.h2o}`;
 
             const h1 = sigmoid(inputs[0] * weights.i1h1 + inputs[1] * weights.i2h1);
             const h2 = sigmoid(inputs[0] * weights.i1h2 + inputs[1] * weights.i2h2);
             const output = sigmoid(h1 * weights.h1o + h2 * weights.h2o);
 
-            logToTable("H1", "0.5*0.5 + 0.5*0.5", h1);
-            logToTable("H2", "0.5*0.5 + 0.5*0.5", h2);
-            logToTable("O", "H1*0.5 + H2*0.5", output);
+            // Clear previous logs
+            document.getElementById("log").innerHTML = "";
+
+            logToTable("H1", h1_calc, h1);
+            logToTable("H2", h2_calc, h2);
+            logToTable("O", output_calc, output);
 
             document.getElementById("hidden1-value").textContent = `A: ${h1.toFixed(2)}`;
             document.getElementById("hidden2-value").textContent = `A: ${h2.toFixed(2)}`;
             document.getElementById("output-value").textContent = `Output: ${output.toFixed(2)}`;
         }
 
+        // Define the updateInput function
+        function updateInput(index, value) {
+            // Update the input value based on the slider
+            inputs[index] = parseFloat(value);
+            // Update the displayed value next to the slider
+            document.getElementById(`input${index + 1}-value-display`).textContent = parseFloat(value).toFixed(2);
+            // Re-run forward propagation to update the network
+            forwardProp();
+        }
+
         document.getElementById("export-button").addEventListener("click", () => {
             const csvContent = "data:text/csv;charset=utf-8," +
                 "Neuron,Calculation,Activation\n" +
                 data.map(row => row.join(",")).join("\n");
-
             const link = document.createElement("a");
             link.setAttribute("href", encodeURI(csvContent));
             link.setAttribute("download", "neural_network_log.csv");
@@ -163,6 +196,7 @@
             document.body.removeChild(link);
         });
 
+        // Initial forward propagation
         forwardProp();
     </script>
 </body>
