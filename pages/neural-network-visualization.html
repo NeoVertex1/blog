@@ -180,6 +180,10 @@
             inputs[index] = parseFloat(value);
             // Update the displayed value next to the slider
             document.getElementById(`input${index + 1}-value-display`).textContent = parseFloat(value).toFixed(2);
+            // Update the corresponding SVG input circle's value text
+            document.getElementById(`input${index + 1}-value`).textContent = parseFloat(value).toFixed(2);
+
+
             // Re-run forward propagation to update the network
             forwardProp();
         }
