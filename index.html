@@ -354,7 +354,149 @@ table {
 <img src="https://hitwebcounter.com/counter/counter.php?page=17365094&style=0038&nbdigits=9&type=page&initCount=0" title="Counter Widget" Alt="Visit counter For Websites"   border="0" /></a>                                    
     <p>
 
+<p><span id="timestamp">4 FEB 2025</span></p>      
 
+<p> had fund with this today trying to understand cybernetics</p>
+
+<img src="/blog/images/cybernetics_test.png">
+<img src="/blog/images/cybernetics_test2.png">
+
+<pre class="formatted-content">
+      
+import numpy as np
+from scipy import linalg
+import matplotlib.pyplot as plt
+
+class Quaternion:
+    def __init__(self, w, x, y, z):
+        self.w = w
+        self.x = x 
+        self.y = y
+        self.z = z
+        
+    def __mul__(self, other):
+        w = self.w*other.w - self.x*other.x - self.y*other.y - self.z*other.z
+        x = self.w*other.x + self.x*other.w + self.y*other.z - self.z*other.y
+        y = self.w*other.y - self.x*other.z + self.y*other.w + self.z*other.x
+        z = self.w*other.z + self.x*other.y - self.y*other.x + self.z*other.w
+        return Quaternion(w, x, y, z)
+
+    def norm(self):
+        return np.sqrt(self.w**2 + self.x**2 + self.y**2 + self.z**2)
+
+    def normalize(self):
+        n = self.norm()
+        if n < 1e-10:
+            return Quaternion(1, 0, 0, 0)
+        return Quaternion(self.w/n, self.x/n, self.y/n, self.z/n)
+
+class QuantumSystem:
+    def __init__(self, dim=4):
+        self.dim = dim
+        self.h_bar = 1.0  # Natural units
+        
+        # Initialize quantum state
+        self.psi = self._random_state()
+        
+        # Create Hamiltonian
+        self.H = self._create_hamiltonian()
+        
+        # Initialize quaternion field
+        self.q_field = np.array([[Quaternion(np.random.normal(0,0.1),
+                                           np.random.normal(0,0.1),
+                                           np.random.normal(0,0.1),
+                                           np.random.normal(0,0.1)).normalize()
+                                 for _ in range(dim)]
+                                for _ in range(dim)])
+
+    def _random_state(self):
+        """Create normalized random quantum state"""
+        state = np.random.normal(0, 1, (self.dim, 1)) + 1j * np.random.normal(0, 1, (self.dim, 1))
+        return state / np.linalg.norm(state)
+
+    def _create_hamiltonian(self):
+        """Create a random Hermitian Hamiltonian"""
+        H = np.random.normal(0, 1, (self.dim, self.dim)) + 1j * np.random.normal(0, 1, (self.dim, self.dim))
+        return (H + H.conj().T) / 2
+
+    def evolve(self, steps=100, dt=0.1):
+        results = []
+        
+        for _ in range(steps):
+            # Quantum evolution
+            U = linalg.expm(-1j * self.H * dt / self.h_bar)
+            self.psi = U @ self.psi
+            
+            # Quaternion field evolution
+            for i in range(self.dim):
+                for j in range(self.dim):
+                    q = self.q_field[i,j]
+                    amp = self.psi[i,0]
+                    # Mix quantum and quaternionic evolution
+                    self.q_field[i,j] = Quaternion(
+                        q.w * np.real(amp),
+                        q.x * np.imag(amp),
+                        q.y * np.abs(amp),
+                        q.z * np.angle(amp)
+                    ).normalize()
+            
+            # Calculate metrics
+            metrics = self._calculate_metrics()
+            results.append(metrics)
+            
+        return results
+
+    def _calculate_metrics(self):
+        # Density matrix
+        rho = self.psi @ self.psi.conj().T
+        
+        # Energy expectation value
+        energy = np.real(np.trace(rho @ self.H))
+        
+        # von Neumann entropy
+        eigenvals = linalg.eigvalsh(rho)
+        eigenvals = eigenvals[eigenvals > 1e-10]
+        entropy = -np.sum(eigenvals * np.log2(eigenvals + 1e-10))
+        
+        # Quaternion field average norm
+        q_norms = [[self.q_field[i,j].norm() for j in range(self.dim)]
+                   for i in range(self.dim)]
+        avg_q_norm = np.mean(q_norms)
+        
+        return {
+            'energy': energy,
+            'entropy': entropy,
+            'q_norm': avg_q_norm,
+            'purity': np.real(np.trace(rho @ rho))
+        }
+
+    def plot_evolution(self, steps=100):
+        data = self.evolve(steps)
+        
+        fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+        fig.suptitle('Quantum Evolution with Quaternion Field')
+        
+        # Plot data
+        times = range(steps)
+        axes[0,0].plot(times, [d['energy'] for d in data])
+        axes[0,0].set_title('Energy')
+        
+        axes[0,1].plot(times, [d['entropy'] for d in data])
+        axes[0,1].set_title('von Neumann Entropy')
+        
+        axes[1,0].plot(times, [d['q_norm'] for d in data])
+        axes[1,0].set_title('Average Quaternion Norm')
+        
+        axes[1,1].plot(times, [d['purity'] for d in data])
+        axes[1,1].set_title('State Purity')
+        
+        for ax in axes.flat:
+            ax.grid(True)
+            
+        plt.tight_layout()
+        return fig
+        </pre>
+          
     <br></br>
     <p><span id="timestamp">31 JAN 2025</span></p>
     <pre class="formatted-content">
